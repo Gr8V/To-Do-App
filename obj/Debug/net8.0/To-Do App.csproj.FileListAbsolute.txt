@@ -1,0 +1,14 @@
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.GeneratedMSBuildEditorConfig.editorconfig
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.AssemblyInfoInputs.cache
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.AssemblyInfo.cs
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.csproj.CoreCompileInputs.cache
+C:\My stuff\Visual Studio Code\C#\To-Do App\bin\Debug\net8.0\To-Do App.exe
+C:\My stuff\Visual Studio Code\C#\To-Do App\bin\Debug\net8.0\To-Do App.deps.json
+C:\My stuff\Visual Studio Code\C#\To-Do App\bin\Debug\net8.0\To-Do App.runtimeconfig.json
+C:\My stuff\Visual Studio Code\C#\To-Do App\bin\Debug\net8.0\To-Do App.dll
+C:\My stuff\Visual Studio Code\C#\To-Do App\bin\Debug\net8.0\To-Do App.pdb
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.dll
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\refint\To-Do App.dll
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.pdb
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.genruntimeconfig.cache
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\ref\To-Do App.dll
