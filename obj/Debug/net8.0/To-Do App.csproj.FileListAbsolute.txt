@@ -12,3 +12,4 @@ C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\refint\To-Do App.dl
 C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.pdb
 C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.genruntimeconfig.cache
 C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\ref\To-Do App.dll
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.sourcelink.json
