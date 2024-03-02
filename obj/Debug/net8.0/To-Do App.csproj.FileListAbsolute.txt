@@ -13,3 +13,6 @@ C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.pdb
 C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.genruntimeconfig.cache
 C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\ref\To-Do App.dll
 C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.sourcelink.json
+C:\My stuff\Visual Studio Code\C#\To-Do App\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.csproj.AssemblyReference.cache
+C:\My stuff\Visual Studio Code\C#\To-Do App\obj\Debug\net8.0\To-Do App.csproj.CopyComplete
