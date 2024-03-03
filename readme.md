@@ -8,7 +8,7 @@
     1. [**addTask()**](#addtask)
     2. [**removeTask()**](#removetask)
     3. [**changeTaskStatus()**](#changetaskstatus)
-    4. [**viewTasks()**](#vie)
+    4. [**viewTasks()**](#viewtasks)
 4. [**ToDoList.json**](#todolistjson)
 <br>
 <br>
@@ -155,13 +155,40 @@ This codeblock takes the user input for the task to be removed, it then converts
     string updatedJsonString = jsonObject.ToString();
     File.WriteAllText("ToDoList.json", updatedJsonString);
     ```
-
 <br>
 <br>
 
 ### **`changeTaskStatus()`**
 > This method is used to change the status of a task from the [ToDoList.json](#todolistjson) file.
 
+<br>
+<br>
+
+Take The User input for the task they want to change.
+-   ```csharp
+    Console.Write("Which task's status do you want to change:- ");
+        string? taskToChange = Console.ReadLine();
+    ```
+<br>
+
+Checks if the specified task exists or not. If it exits the code in the if statement gets executed.
+<br>
+
+The code inside the if statement converts the .json file into a jsonObject and asks the user for the new status. It then changes the task's status and writes the jsonObject onto the .json file
+-   ```csharp
+    if(taskToChange != null){
+        JObject jsonObject = JObject.Parse(File.ReadAllText("ToDoList.json"));
+        Console.WriteLine("Current Status = " + jsonObject[taskToChange]);
+        Console.Write("New Status = ");
+        string? newStatus = Console.ReadLine();
+        jsonObject[taskToChange] = newStatus;
+        File.WriteAllText("ToDoList.json", jsonObject.ToString());
+    }
+    else if(taskToChange == null){
+        Console.WriteLine("");
+        Console.WriteLine("No Task Specified");
+    }
+    ```
 <br>
 <br>
 

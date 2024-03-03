@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,7 +15,7 @@ public class Commands{
         }
         Console.Write("Enter task name: ");
         string? task = Console.ReadLine();
-        File.AppendAllText("ToDoList.json", seprator+"\""+task+"\"" +":\"False\",");
+        File.AppendAllText("ToDoList.json", seprator+"\""+task+"\"" +":\"Not-Done\",");
     }
     public static void removeTask()
     {
@@ -35,7 +36,20 @@ public class Commands{
     }
     public static void changeTaskStatus()
     {
-
+        Console.Write("Which task's status do you want to change:- ");
+        string? taskToChange = Console.ReadLine();
+        if(taskToChange != null){
+            JObject jsonObject = JObject.Parse(File.ReadAllText("ToDoList.json"));
+            Console.WriteLine("Current Status = " + jsonObject[taskToChange]);
+            Console.Write("New Status = ");
+            string? newStatus = Console.ReadLine();
+            jsonObject[taskToChange] = newStatus;
+            File.WriteAllText("ToDoList.json", jsonObject.ToString());
+        }
+        else if(taskToChange == null){
+            Console.WriteLine("");
+            Console.WriteLine("No Task Specified");
+        }
     }
     public static void viewTasks()
     {
