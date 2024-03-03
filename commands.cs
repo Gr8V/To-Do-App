@@ -22,7 +22,6 @@ public class Commands{
         char lastChar = content[content.Length -1];
         if(lastChar != '}'){
             content = content.Substring(0, content.Length - 1);
-            
             File.WriteAllText("ToDoList.json", content+ "}");
         }
         Console.Write("Which task do you want to remove: ");

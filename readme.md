@@ -40,7 +40,7 @@ This codeblock takes the input from the user and converts it into a string with 
     Console.WriteLine("Enter what you want to do (eg. Add Task/ Remove Task/ Change Task Status/ View Tasks) :--");
     string? rawcommand = Console.ReadLine();
     if(rawcommand != null){
-            tring? noSpaceCommand = rawcommand.Replace(" ", "");
+        string? noSpaceCommand = rawcommand.Replace(" ", "");
         command = noSpaceCommand.ToLower();
     }
     ```
@@ -53,38 +53,38 @@ This codeblock redirects to other methods in [**commands.cs**](#commandscs) file
 The **exit** command breaks out of the `while()` loop that surrounds the procecssing of user input.
 -   ```csharp
     switch(command)
-            {
-                case "addtask":
-                case "addtasks":
-                case "add":
-                case "+":
-                    Commands.addTask();
-                    break;
-                case "removetask":
-                case "removetasks":
-                case "remove":
-                case "delete":
-                case "deletetask":
-                case "deletetasks":
-                case "-":
-                    Commands.removeTask();
-                    break;
-                case "change":
-                case "changetaskstatus":
-                case "changestatus":
-                    Commands.changeTaskStatus();
-                    break;
-                case "viewtask":
-                case "viewtasks":
-                case "view":
-                case "showtask":
-                case "showtasks":
-                    Commands.viewTasks();
-                    break;
-                case "exit":
-                    shouldExit = true;
-                    break;
-            }
+    {
+        case "addtask":
+        case "addtasks":
+        case "add":
+        case "+":
+            Commands.addTask();
+            break;
+        case "removetask":
+        case "removetasks":
+        case "remove":
+        case "delete":
+        case "deletetask":
+        case "deletetasks":
+        case "-":
+            Commands.removeTask();
+            break;
+        case "change":
+        case "changetaskstatus":
+        case "changestatus":
+            Commands.changeTaskStatus();
+            break;
+        case "viewtask":
+        case "viewtasks":
+        case "view":
+        case "showtask":
+        case "showtasks":
+            Commands.viewTasks();
+            break;
+        case "exit":
+            shouldExit = true;
+            break;
+    }
     ```
 <br>
 <br>
@@ -96,7 +96,9 @@ The **exit** command breaks out of the `while()` loop that surrounds the procecs
 <hr color="yellow">
 
 ## **commands.cs**
-> This file contains methods that contain logic which is executed in response to a command
+> This file contains methods that contain logic which is executed in response to a command.
+
+<br>
 
 ### **`addTask()`**
 > This method adds a task to the [ToDoList.json](#todolistjson) file.
@@ -104,8 +106,55 @@ The **exit** command breaks out of the `while()` loop that surrounds the procecs
 <br>
 <br>
 
+The *seprator* variable adds comma at the end of a task if the curly braces are not closed.
+<br>
+
+The user input for new task is taken and stored in the *task* variable.
+- ```csharp
+    string seprator = "";
+    string content = File.ReadAllText("ToDoList.json");
+    char lastChar = content[content.Length-1];
+    if(lastChar == '}'){
+        content = content.Replace("}", "");
+        File.WriteAllText("ToDoList.json", content);
+        seprator = ",";
+    }
+    Console.Write("Enter task name: ");
+    string? task = Console.ReadLine();
+    File.AppendAllText("ToDoList.json", seprator+"\""+task+"\"" +":\"False\",");
+    ```
+
+<br>
+<br>
+
 ### **`removeTask()`**
 > This method removes a task from the [ToDoList.json](#todolistjson) file.
+
+<br>
+<br>
+
+This codeblock checks if the json file is closed before removing a element so that any error doesn't show up, it closes the file if the file is not already closed.
+-   ```csharp
+    string content = File.ReadAllText("ToDoList.json");
+    char lastChar = content[content.Length -1];
+    if(lastChar != '}'){
+        content = content.Substring(0, content.Length - 1);
+        File.WriteAllText("ToDoList.json", content+ "}");
+    }
+    ```
+<br>
+
+This codeblock takes the user input for the task to be removed, it then converts the .json file into a jsonObject and then removes the desired task if it isn't empty, then it converts the jsonObject to a string and writes it onto the .json file.
+-   ```csharp
+    Console.Write("Which task do you want to remove: ");
+    string? taskToRemove = Console.ReadLine();
+    JObject jsonObject = JObject.Parse(File.ReadAllText("ToDoList.json"));
+    if(taskToRemove != null){
+        jsonObject.Remove(taskToRemove);
+    }
+    string updatedJsonString = jsonObject.ToString();
+    File.WriteAllText("ToDoList.json", updatedJsonString);
+    ```
 
 <br>
 <br>
