@@ -4,9 +4,17 @@ using Newtonsoft.Json.Linq;
 public class Commands{
     public static void addTask()
     {
+        string seprator = "";
+        string content = File.ReadAllText("ToDoList.json");
+        char lastChar = content[content.Length-1];
+        if(lastChar == '}'){
+            content = content.Replace("}", "");
+            File.WriteAllText("ToDoList.json", content);
+            seprator = ",";
+        }
         Console.Write("Enter task name: ");
         string? task = Console.ReadLine();
-        File.AppendAllText("ToDoList.json", "\""+task+"\"" +":\"False\",");
+        File.AppendAllText("ToDoList.json", seprator+"\""+task+"\"" +":\"False\",");
     }
     public static void removeTask()
     {

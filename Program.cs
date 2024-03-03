@@ -40,11 +40,12 @@ public class Program{
                     Commands.viewTasks();
                     break;
             }
+            string finalContent = File.ReadAllText("ToDoList.json");
+            finalContent = finalContent.Substring(0, finalContent.Length - 1);
+            File.WriteAllText("ToDoList.json",finalContent);
+            File.AppendAllText("ToDoList.json", "}");
             Console.WriteLine(" ");
         }
-        string finalContent = File.ReadAllText("ToDoList.json");
-        finalContent = finalContent.Substring(0, finalContent.Length - 1);
-        File.WriteAllText("ToDoList.json",finalContent);
-        File.AppendAllText("ToDoList.json", "}");
+        
     }
 }
