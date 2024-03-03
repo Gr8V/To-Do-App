@@ -1,4 +1,3 @@
-<style>h1,h2,h3,h4 { border-bottom: 0; } </style>
 # To-Do App Documentation
 <hr color="yellow">
 
