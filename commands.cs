@@ -53,6 +53,14 @@ public class Commands{
     }
     public static void viewTasks()
     {
-
+        JObject jsonObject = JObject.Parse(File.ReadAllText("ToDoList.json"));
+        jsonObject.Remove("");
+        string jsonContent = jsonObject.ToString();
+        jsonContent = jsonContent.Replace("{", "");
+        jsonContent = jsonContent.Replace("}", "");
+        jsonContent = jsonContent.Replace(",", "");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(jsonContent);
+        Console.ResetColor();
     }
 }

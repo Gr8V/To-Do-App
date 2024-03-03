@@ -9,7 +9,6 @@
     2. [**removeTask()**](#removetask)
     3. [**changeTaskStatus()**](#changetaskstatus)
     4. [**viewTasks()**](#viewtasks)
-4. [**ToDoList.json**](#todolistjson)
 <br>
 <br>
 <hr color="yellow">
@@ -31,6 +30,22 @@
 The string **command** is declared outside of the **Main()** function because its value is assigned inside a if statement so it could not be used in other places.
 -   ```csharp
     static string? command = "";
+    ```
+<br>
+<br>
+
+This Codeblock Opens the .json file at the beginning of the program so that new tasks can be added to the file if needed.
+<br>
+
+then the if block adds a comma to the end if there is not a comma already and the file is not empty.
+-   ```csharp
+    string content = File.ReadAllText("ToDoList.json");
+    content = content.Replace("}", "");
+    File.WriteAllText("ToDoList.json",content);
+    char lastChar = content[content.Length -1];
+    if(lastChar != ',' && lastChar != '{'){
+        File.AppendAllText("ToDoList.json", ",");
+    }
     ```
 <br>
 <br>
@@ -89,7 +104,14 @@ The **exit** command breaks out of the `while()` loop that surrounds the procecs
 <br>
 <br>
 
-> For information about the code inside `#region json` go to [**ToDoList.json**](#todolistjson).
+This block of code removes the comma at the end a task and adds a curly brace to close the file
+-   ```csharp
+    string finalContent = File.ReadAllText("ToDoList.json");
+    finalContent = finalContent.Substring(0, finalContent.Length - 1);
+    File.WriteAllText("ToDoList.json",finalContent);
+    File.AppendAllText("ToDoList.json", "}");
+    Console.WriteLine(" ");
+    ```
 
 <br>
 <br>
@@ -197,8 +219,16 @@ The code inside the if statement converts the .json file into a jsonObject and a
 
 <br>
 <br>
-<hr color="yellow">
 
-## **ToDoList.json**
-
->This file contains the list of tasks and their status in the form of a .json file
+Converts .json file into Readable format and then displays it on the console in yellow colour.
+-   ```csharp
+    JObject jsonObject = JObject.Parse(File.ReadAllText("ToDoList.json"));
+    jsonObject.Remove("");
+    string jsonContent = jsonObject.ToString();
+    jsonContent = jsonContent.Replace("{", "");
+    jsonContent = jsonContent.Replace("}", "");
+    jsonContent = jsonContent.Replace(",", "");
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine(jsonContent);
+    Console.ResetColor();
+    ```

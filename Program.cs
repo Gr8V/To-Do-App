@@ -6,7 +6,6 @@ public class Program{
     static string? command = "";
     public static void Main(string[] args)
     {
-        #region json
         string content = File.ReadAllText("ToDoList.json");
         content = content.Replace("}", "");
         File.WriteAllText("ToDoList.json",content);
@@ -14,7 +13,6 @@ public class Program{
         if(lastChar != ',' && lastChar != '{'){
             File.AppendAllText("ToDoList.json", ",");
         }
-        #endregion
         bool shouldExit = false;
         while(!shouldExit){
             Console.WriteLine("Enter what you want to do (eg. Add Task/ Remove Task/ Change Task Status/ View Tasks) :--");
@@ -58,13 +56,11 @@ public class Program{
                     shouldExit = true;
                     break;
             }
-            #region json
             string finalContent = File.ReadAllText("ToDoList.json");
             finalContent = finalContent.Substring(0, finalContent.Length - 1);
             File.WriteAllText("ToDoList.json",finalContent);
             File.AppendAllText("ToDoList.json", "}");
             Console.WriteLine(" ");
-            #endregion
         }
         
     }
