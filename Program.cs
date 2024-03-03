@@ -15,6 +15,7 @@ public class Program{
         }
         bool shouldExit = false;
         while(!shouldExit){
+
             Console.WriteLine("Enter what you want to do (eg. Add Task/ Remove Task/ Change Task Status/ View Tasks) :--");
             if(true){
                 string? rawcommand = Console.ReadLine();
@@ -52,6 +53,10 @@ public class Program{
                 case "showtasks":
                     Commands.viewTasks();
                     break;
+                case "clear":
+                case "cls":
+                    Console.Clear();
+                    break;
                 case "exit":
                     shouldExit = true;
                     break;
@@ -61,6 +66,12 @@ public class Program{
             File.WriteAllText("ToDoList.json",finalContent);
             File.AppendAllText("ToDoList.json", "}");
             Console.WriteLine(" ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;
+            int windowWidth = Console.WindowWidth;
+            string repeatString = new string("."[0], windowWidth);
+            Console.WriteLine(repeatString);
+            Console.ResetColor();
         }
         
     }
