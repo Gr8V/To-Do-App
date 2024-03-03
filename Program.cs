@@ -6,6 +6,7 @@ public class Program{
     static string? command = "";
     public static void Main(string[] args)
     {
+        #region json
         string content = File.ReadAllText("ToDoList.json");
         content = content.Replace("}", "");
         File.WriteAllText("ToDoList.json",content);
@@ -13,7 +14,9 @@ public class Program{
         if(lastChar != ',' && lastChar != '{'){
             File.AppendAllText("ToDoList.json", ",");
         }
-        while(true){
+        #endregion
+        bool shouldExit = false;
+        while(!shouldExit){
             Console.WriteLine("Enter what you want to do (eg. Add Task/ Remove Task/ Change Task Status/ View Tasks) :--");
             if(true){
                 string? rawcommand = Console.ReadLine();
@@ -22,29 +25,46 @@ public class Program{
                     command = noSpaceCommand.ToLower();
                 }
             }
-            if(command == "exit"){
-                break;
-            }
             switch(command)
             {
-                case "addtask" or "addtasks" or "add" or "+":
+                case "addtask":
+                case "addtasks":
+                case "add":
+                case "+":
                     Commands.addTask();
                     break;
-                case "removetask" or "removetasks" or "remove" or "delete" or "deletetask" or "deletetasks" or "-":
+                case "removetask":
+                case "removetasks":
+                case "remove":
+                case "delete":
+                case "deletetask":
+                case "deletetasks":
+                case "-":
                     Commands.removeTask();
                     break;
-                case "change" or "changetaskstatus" or "changestatus":
+                case "change":
+                case "changetaskstatus":
+                case "changestatus":
                     Commands.changeTaskStatus();
                     break;
-                case "viewtask" or "viewtasks" or "view" or "showtask" or "showtasks":
+                case "viewtask":
+                case "viewtasks":
+                case "view":
+                case "showtask":
+                case "showtasks":
                     Commands.viewTasks();
                     break;
+                case "exit":
+                    shouldExit = true;
+                    break;
             }
+            #region json
             string finalContent = File.ReadAllText("ToDoList.json");
             finalContent = finalContent.Substring(0, finalContent.Length - 1);
             File.WriteAllText("ToDoList.json",finalContent);
             File.AppendAllText("ToDoList.json", "}");
             Console.WriteLine(" ");
+            #endregion
         }
         
     }
