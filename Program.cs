@@ -60,6 +60,9 @@ public class Program{
                 case "exit":
                     shouldExit = true;
                     break;
+                default:
+                    Console.WriteLine("Not a valid command.");
+                    break;
             }
             string finalContent = File.ReadAllText("ToDoList.json");
             finalContent = finalContent.Substring(0, finalContent.Length - 1);
