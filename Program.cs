@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-
-
-public class Program{
+﻿public class Program{
     static string? command = "";
     public static void Main(string[] args)
     {
@@ -68,12 +64,10 @@ public class Program{
             finalContent = finalContent.Substring(0, finalContent.Length - 1);
             File.WriteAllText("ToDoList.json",finalContent);
             File.AppendAllText("ToDoList.json", "}");
-            Console.WriteLine(" ");
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Red;
-            int windowWidth = Console.WindowWidth;
-            string repeatString = new string("."[0], windowWidth);
-            Console.WriteLine(repeatString);
+            Console.WriteLine(" ");
+            Console.WriteLine("______________________________________________________");
             Console.ResetColor();
         }
         
