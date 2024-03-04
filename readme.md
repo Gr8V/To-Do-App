@@ -16,7 +16,7 @@
 ## **Packages used**
 - Newtonsoft--> This c# package is used to interact with .json files using c#
     - *`dotnet add package Newtonsoft.json`*
-    - Add *`using Newtonsoft.json;`* at the top of your file
+    - Add *`using Newtonsoft.json.linq;`* at the top of your file for this program
 <br>
 <br>
 <hr color="yellow">
@@ -104,13 +104,17 @@ The **exit** command breaks out of the `while()` loop that surrounds the procecs
 <br>
 <br>
 
-This block of code removes the comma at the end a task and adds a curly brace to close the file
+This block of code removes the comma at the end a task and adds a curly brace to close the file, it then prints a red line for sepration
 -   ```csharp
     string finalContent = File.ReadAllText("ToDoList.json");
     finalContent = finalContent.Substring(0, finalContent.Length - 1);
     File.WriteAllText("ToDoList.json",finalContent);
     File.AppendAllText("ToDoList.json", "}");
+    Console.BackgroundColor = ConsoleColor.Red;
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(" ");
+    Console.WriteLine("______________________________________________________");
+    Console.ResetColor();
     ```
 
 <br>
